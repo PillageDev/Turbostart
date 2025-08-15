@@ -1,0 +1,19 @@
+import "@repo/ui/styles/globals.css";
+
+import { Providers } from "~/components/providers";
+
+export default async function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const lang = "en";
+
+  return (
+    <html lang={lang} suppressHydrationWarning>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
+    </html>
+  );
+}

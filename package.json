@@ -1,14 +1,21 @@
 {
-  "name": "SpikeCenter",
+  "name": "monorepo",
   "private": true,
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev",
+    "build": "NODE_ENV=production dotenvx run --convention=nextjs -- turbo run build",
+    "dev": "NODE_ENV=development dotenvx run --convention=nextjs -- turbo run dev",
+    "dev:setup": "docker start dev-database || docker run --name dev-database -e POSTGRES_PASSWORD=123456789 -p 7501:5432 -d postgres && docker start mailpit || docker run -d --restart unless-stopped --name=mailpit -p 8025:8025 -p 1025:1025 axllent/mailpit",
     "lint": "turbo run lint",
+    "lint:fix": "turbo run lint -- --fix",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "check-types": "turbo run check-types"
+    "check-types": "dotenvx run --convention=nextjs -- turbo run check-types",
+    "prepare": "husky",
+    "postinstall": "cp patches/next-intl/hasStableTurboConfig.js node_modules/next-intl/dist/esm/production/plugin/hasStableTurboConfig.js"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "husky": "^9.1.7",
     "prettier": "^3.6.2",
     "turbo": "^2.5.5",
     "typescript": "5.9.2"
@@ -19,6 +26,11 @@
   "packageManager": "bun@1.2.18",
   "workspaces": [
     "apps/*",
-    "packages/*"
-  ]
+    "packages/*",
+    "tooling/*"
+  ],
+  "dependencies": {
+    "@turbo/gen": "^2.5.5",
+    "patch-package": "^8.0.0"
+  }
 }

@@ -1,0 +1,43 @@
+{
+  "name": "@repo/db",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "clean": "git clean -xdf .turbo node_modules",
+    "format": "prettier --check \"**/*.{ts,tsx}\"",
+    "lint": "eslint .",
+    "check-types": "tsc --noEmit",
+    "db:migrate": "dotenvx run --env-file=../../.env --env-file=../../.env.development --convention=nextjs -- drizzle-kit generate && dotenvx run --env-file=../../.env --env-file=../../.env.development --convention=nextjs -- drizzle-kit migrate",
+    "db:push": "dotenvx run --env-file=../../.env --env-file=../../.env.development --convention=nextjs -- drizzle-kit push",
+    "db:reset": "dotenvx run --env-file=../../.env --env-file=../../.env.development --convention=nextjs -- drizzle-kit push --force --config drizzle-empty.config.ts",
+    "db:studio": "dotenvx run --env-file=../../.env --env-file=../../.env.development --convention=nextjs -- drizzle-kit studio"
+  },
+  "prettier": "@repo/prettier-config",
+  "exports": {
+    ".": "./src/index.ts",
+    "./providers": "./src/providers.tsx"
+  },
+  "devDependencies": {
+    "@repo/env": "*",
+    "@repo/eslint-config": "*",
+    "@repo/prettier-config": "*",
+    "@repo/tailwind-config": "*",
+    "@repo/typescript-config": "*",
+    "@types/node": "^22.15.3",
+    "@types/pg": "^8.15.4",
+    "drizzle-kit": "^0.31.4",
+    "eslint": "^9.31.0"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "src/*"
+      ]
+    }
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.44.4",
+    "pg": "^8.16.3"
+  }
+}

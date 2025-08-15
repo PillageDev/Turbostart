@@ -1,0 +1,44 @@
+{
+  "name": "@repo/auth",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "clean": "git clean -xdf .turbo node_modules",
+    "format": "prettier --check \"**/*.{ts,tsx}\"",
+    "lint": "eslint .",
+    "check-types": "tsc --noEmit",
+    "migrate": "bunx @better-auth/cli@latest generate --output ../db/src/db/auth.ts --config src/auth.ts"
+  },
+  "prettier": "@repo/prettier-config",
+  "exports": {
+    ".": "./src/auth.ts",
+    "./verify-bearer": "./src/utils/verify-bearer.ts",
+    "./auth.server": "./src/auth.server.ts",
+    "./client": "./src/authClient.ts",
+    "./types": "./src/types.ts"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "@repo/prettier-config": "*",
+    "@repo/tailwind-config": "*",
+    "@repo/typescript-config": "*",
+    "@types/nodemailer": "^6.4.17",
+    "eslint": "^9.31.0"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "src/*"
+      ]
+    }
+  },
+  "dependencies": {
+    "@better-auth/expo": "^1.3.4",
+    "@better-auth/stripe": "^1.2.12",
+    "@repo/db": "*",
+    "@repo/env": "*",
+    "better-auth": "^1.3.6",
+    "nodemailer": "^7.0.5"
+  }
+}

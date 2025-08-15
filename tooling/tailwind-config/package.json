@@ -1,0 +1,31 @@
+{
+  "name": "@repo/tailwind-config",
+  "version": "0.1.0",
+  "license": "MIT",
+  "files": [
+    "postcss.config.js"
+  ],
+  "exports": {
+    "./postcss": "./postcss.config.js"
+  },
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules",
+    "lint": "eslint .",
+    "format": "prettier --check \"**/*.{js,ts,json}\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "postcss": "8.5.1",
+    "tailwindcss": "4.0.0"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "@repo/prettier-config": "*",
+    "@repo/typescript-config": "*",
+    "@tailwindcss/postcss": "^4.0.0",
+    "eslint": "^9.31.0",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.3"
+  },
+  "prettier": "@repo/prettier-config"
+}

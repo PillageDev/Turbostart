@@ -1,0 +1,37 @@
+{
+  "name": "@repo/config",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "clean": "git clean -xdf .turbo node_modules",
+    "format": "prettier --check \"**/*.{ts,tsx}\"",
+    "lint": "eslint .",
+    "check-types": "tsc --noEmit",
+    "migrate": "bunx @better-auth/cli@latest generate --output ../db/src/db/auth.ts --config src/auth.ts"
+  },
+  "prettier": "@repo/prettier-config",
+  "exports": {
+    "./paths.config": "./src/paths/paths.config.ts",
+    "./paths.utils": "./src/paths/paths.utils.ts",
+    "./i18n.config": "./src/i18n.config.ts"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "@repo/prettier-config": "*",
+    "@repo/tailwind-config": "*",
+    "@repo/typescript-config": "*",
+    "eslint": "^9.31.0"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "src/*"
+      ]
+    }
+  },
+  "dependencies": {
+    "@repo/env": "*",
+    "zod": "^4.0.17"
+  }
+}

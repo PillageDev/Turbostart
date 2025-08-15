@@ -1,0 +1,23 @@
+# This .eslintignore file is here primarily to RE-include (unignore) at least one file
+# so that running `eslint .` in this package does not fail with:
+# "You are linting '.', but all of the files matching the glob pattern '.' are ignored."
+#
+# The shared base config currently has ignorePatterns including "**/*.config.js",
+# which causes our only JS file (postcss.config.js) to be ignored. ESLint applies
+# ignorePatterns from config after .eslintignore, so we cannot truly “unignore” it here.
+#
+# However, we still document intent and leave placeholders so that if additional
+# JS/TS files are added they won’t be accidentally ignored.
+
+# Ignore nothing explicitly (no added ignore patterns).
+
+# If the base config stops ignoring *.config.js in the future, we WANT to lint postcss.config.js.
+# Leaving a negated pattern for clarity (it has no effect while the base config ignores it).
+!postcss.config.js
+
+# When you add actual source files (e.g. index.ts), they will be linted automatically.
+# If you add build artifacts, list them below, e.g.:
+# dist/
+# build/
+
+# End of .eslintignore

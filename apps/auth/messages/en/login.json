@@ -1,0 +1,22 @@
+{
+  "LoginPage": {
+    "welcomeText": "Welcome to {company}",
+    "noAccountText": "Don't have an account? Continue with a provider below.",
+    "loginButtonText": "Continue with Magic Link",
+    "loginWithGithubText": "Continue with GitHub",
+    "tosMessage": "By continuing, you agree to our {termsOfService} and {privacyPolicy}.",
+    "termsOfService": "Terms of Service",
+    "privacyPolicy": "Privacy Policy",
+    "dividerText": "Or"
+  },
+  "MagicLink": {
+    "emailSent": "An email has been sent to {email}. Please check your inbox and click the link to log in.",
+    "emailFailed": "Failed to send magic link. Please try again."
+  },
+  "LoginWithGithub": {
+    "error": "Failed to log in with GitHub. Please try again."
+  },
+  "Profile": {
+    "title": "Your Profile"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "@repo/api",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./context": "./src/context.ts",
+    ".": "./src/index.ts",
+    "./trpc": "./src/trpc.ts",
+    "./next": "./src/next/index.ts"
+  },
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "generate:component": "turbo gen react-component",
+    "check-types": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
+    "eslint": "^9.33.0",
+    "typescript": "5.9.2"
+  },
+  "dependencies": {
+    "@repo/auth": "*",
+    "@trpc/server": "^11.4.4",
+    "superjson": "^2.2.2",
+    "zod": "^4.0.17"
+  }
+}
